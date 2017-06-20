@@ -1,0 +1,3 @@
+[nexus]
+nexus_name={{ nexus_name }}
+nexus_home={{ nexus_home }}

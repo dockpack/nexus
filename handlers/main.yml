@@ -1,2 +1,16 @@
 ---
 # handlers file for bbaassssiiee.nexus
+
+- name: reload unit
+  become: yes
+  command: systemctl daemon-reload
+
+- name: restart nexus
+  service:
+    name: nexus
+    state: restarted
+
+- name: start nexus
+  service:
+    name: nexus
+    state: started
