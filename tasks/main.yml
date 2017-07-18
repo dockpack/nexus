@@ -94,7 +94,7 @@
   tags:
     - nexus
 
-- name: install the nexus service file
+- name: render Nexus systemd service file
   template:
     src: nexus.service
     dest: /etc/systemd/system/nexus.service
@@ -107,7 +107,7 @@
     - nexus
     - init
 
-- name: install /etc/profile.d/nexus.sh
+- name: render Nexus Shell profile
   template:
     src: nexus.profile.sh
     dest: /etc/profile.d/nexus.profile.sh
@@ -142,7 +142,7 @@
     group: "{{ nexus_group }}"
     recurse: true
 
-- name: grant ownership on pid-dir
+- name: grant ownership on nexus_piddir
   file:
     path: "{{ nexus_piddir }}"
     owner: "{{ nexus_user }}"
