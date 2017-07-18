@@ -2,7 +2,7 @@
 # handlers file for bbaassssiiee.nexus
 
 - name: reload unit
-  become: yes
+  become: true
   command: systemctl daemon-reload
 
 - name: restart nexus
