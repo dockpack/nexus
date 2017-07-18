@@ -2,7 +2,9 @@
 
 - name: reload unit
   become: true
-  command: systemctl daemon-reload
+  systemd:
+    state: restarted
+    daemon_reload: true
 
 - name: restart Nexus
   service:
