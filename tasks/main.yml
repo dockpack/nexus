@@ -79,7 +79,7 @@
   unarchive:
     src: "{{ nexus_url }}"
     dest: "{{ nexus_location }}"
-    copy: no
+    copy: false
   retries: 3
   when: not nexus_installed.stat.exists
   tags:
@@ -122,7 +122,7 @@
 - name: register service with system
   service:
     name: nexus
-    enabled: yes
+    enabled: true
   notify: restart nexus
   tags:
     - nexus
@@ -139,9 +139,9 @@
 - name: grant ownership on nexus_work
   file:
     path: "{{ nexus_work }}"
-    recurse: yes
     owner: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
+    recurse: true
 
 - name: grant ownership on pid-dir
   file:
