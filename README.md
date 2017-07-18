@@ -14,6 +14,8 @@ Role Variables
 ```
 nexus_version: 3.4.0-02
 nexus_work: /opt/nexus/sonatype-work/nexus3
+nexus_user: nexus
+nexus_group: nexus
 ```
 
 Dependencies
