@@ -1,7 +1,7 @@
 ---
 # tasks file for bbaassssiiee.nexus
 
-- name: Ensure facts can be stored locally
+- name: ensure facts can be stored locally
   file:
     path: /etc/ansible/facts.d
     state: directory
@@ -25,7 +25,7 @@
     - nexus
     - test
 
-- name: make sure directory for nexus exists
+- name: make sure directory for Nexus exists
   file:
     dest: "{{ nexus_home }}"
     state: directory
@@ -35,7 +35,7 @@
   tags:
     - nexus
 
-- name: make sure nexus group exists
+- name: make sure Nexus group exists
   become: true
   group:
     name: nexus
@@ -43,7 +43,7 @@
   tags:
     - nexus
 
-- name: make sure nexus user exists
+- name: make sure Nexus user exists
   become: true
   user:
     name: nexus
@@ -60,7 +60,7 @@
   tags:
     - nexus
 
-- name: install nexus facts
+- name: install Nexus facts
   template:
     src: nexus.fact
     dest: /etc/ansible/facts.d/nexus.fact
@@ -75,7 +75,7 @@
   tags:
     - test
 
-- name: unarchive nexus
+- name: unarchive Nexus
   unarchive:
     src: "{{ nexus_url }}"
     dest: "{{ nexus_location }}"
@@ -85,10 +85,10 @@
   tags:
     - nexus
 
-- name: link to nexus for convention
+- name: link to Nexus for convention
   file:
     src: "{{ nexus_location }}/nexus-{{ nexus_version }}"
-    dest: '/usr/local/nexus'
+    dest: /usr/local/nexus
     owner: nexus
     group: nexus
     state: link
