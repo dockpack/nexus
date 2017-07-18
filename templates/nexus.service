@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=forking
 EnvironmentFile=/etc/profile.d/nexus.profile.sh
-PIDFile={{ nexus_work }}/nexus.pid
+PIDFile={{ nexus_piddir }}/nexus.pid
 ExecStart=/bin/bash -c "{{ nexus_home }}/bin/nexus start"
 ExecStop=/bin/bash -c "{{ nexus_home }}/bin/nexus stop"
 User={{ nexus_user }}

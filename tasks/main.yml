@@ -129,22 +129,22 @@
 
 - name: grant ownership on directory
   file:
-    path: "{{ nexus_work }}/log"
+    path: "{{ nexus_workdir }}/log"
     owner: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
     mode: 0750
     state: directory
 
-- name: grant ownership on nexus_work
+- name: grant ownership on nexus_workdir
   file:
-    path: "{{ nexus_work }}"
+    path: "{{ nexus_workdir }}"
     owner: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
     recurse: true
 
 - name: grant ownership on pid-dir
   file:
-    path: /var/run/nexus
+    path: "{{ nexus_piddir }}"
     owner: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
     state: directory
