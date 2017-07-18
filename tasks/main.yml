@@ -127,7 +127,7 @@
     - nexus
     - init
 
-- name: grant ownership on directory
+- name: grant ownership on Nexus logs directory
   file:
     path: "{{ nexus_workdir }}/log"
     owner: "{{ nexus_user }}"
