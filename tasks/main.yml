@@ -35,7 +35,7 @@
   tags:
     - nexus
 
-- name: make sure Nexus group exists
+- name: make sure group for Nexus exists
   become: true
   group:
     name: "{{ nexus_group }}"
@@ -43,12 +43,12 @@
   tags:
     - nexus
 
-- name: make sure Nexus user exists
+- name: make sure user for Nexus exists
   become: true
   user:
-    shell: '/bin/bash'
     name: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
+    shell: /bin/bash
     state: present
   tags:
     - nexus
@@ -110,8 +110,8 @@
 
 - name: install /etc/profile.d/nexus.sh
   template:
-    src: 'nexus.profile.sh'
-    dest: '/etc/profile.d/nexus.profile.sh'
+    src: nexus.profile.sh
+    dest: /etc/profile.d/nexus.profile.sh
     owner: root
     group: root
     mode: 0644
