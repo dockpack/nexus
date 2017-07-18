@@ -12,11 +12,21 @@ Role Variables
 --------------
 
 ```
-nexus_version: 3.4.0-02
+# from defaults/main.yml
+nexus_version:
 nexus_workdir: /opt/nexus/sonatype-work/nexus3
 nexus_piddir: /var/run/nexus
 nexus_user: nexus
 nexus_group: nexus
+
+# from vars/main.yml
+nexus_name: "nexus-{{ nexus_version }}"
+nexus_tarfile: "{{ nexus_name }}-unix.tar.gz"
+nexus_base_url: https://download.sonatype.com/nexus/3
+nexus_url: "{{ nexus_base_url }}/{{ nexus_tarfile }}"
+
+nexus_location: /opt/nexus
+nexus_home: "{{ nexus_location }}/{{ nexus_name }}"
 ```
 
 Dependencies

@@ -4,12 +4,12 @@
   become: true
   command: systemctl daemon-reload
 
-- name: restart nexus
+- name: restart Nexus
   service:
     name: nexus
     state: restarted
 
-- name: start nexus
+- name: start Nexus
   service:
     name: nexus
     state: started
