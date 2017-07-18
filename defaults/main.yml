@@ -1,5 +1,4 @@
 ---
-# defaults file for bbaassssiiee.nexus
 
 nexus_version: 3.4.0-02
 nexus_work: /opt/nexus/sonatype-work/nexus3

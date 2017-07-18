@@ -1,5 +1,4 @@
 ---
-# tasks file for bbaassssiiee.nexus
 
 - name: ensure facts can be stored locally
   file:

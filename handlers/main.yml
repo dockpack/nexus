@@ -1,5 +1,4 @@
 ---
-# handlers file for bbaassssiiee.nexus
 
 - name: reload unit
   become: true

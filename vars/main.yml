@@ -1,5 +1,5 @@
 ---
-# vars file for bbaassssiiee.nexus
+
 nexus_name: "nexus-{{ nexus_version }}"
 nexus_tarfile: "{{ nexus_name }}-unix.tar.gz"
 nexus_base_url: http://download.sonatype.com/nexus/3
