@@ -6,12 +6,12 @@
     state: restarted
     daemon_reload: true
 
-- name: restart Nexus
+- name: restart nexus
   service:
     name: nexus
     state: restarted
 
-- name: start Nexus
+- name: start nexus
   service:
     name: nexus
     state: started
