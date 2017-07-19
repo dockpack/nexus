@@ -3,6 +3,7 @@
 - name: reload unit
   become: true
   systemd:
+    name: nexus
     state: restarted
     daemon_reload: true
 
