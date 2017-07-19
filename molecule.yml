@@ -1,4 +1,5 @@
 ---
+
 dependency:
   name: galaxy
   requirements_file: requirements.yml
@@ -12,7 +13,7 @@ vagrant:
   platforms:
     - name: redesign/centos7
       box: redesign/centos7
-      box_url: https://atlas.hashicorp.com/redesing/boxes/centos7
+      box_url: https://atlas.hashicorp.com/redesign/boxes/centos7
   providers:
     - name: virtualbox
       type: virtualbox

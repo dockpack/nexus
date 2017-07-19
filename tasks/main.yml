@@ -1,7 +1,6 @@
 ---
-# tasks file for bbaassssiiee.nexus
 
-- name: Ensure facts can be stored locally
+- name: ensure facts can be stored locally
   file:
     path: /etc/ansible/facts.d
     state: directory
@@ -25,7 +24,7 @@
     - nexus
     - test
 
-- name: 'make sure directory for nexus exists'
+- name: make sure directory for Nexus exists
   file:
     dest: "{{ nexus_home }}"
     state: directory
@@ -35,32 +34,32 @@
   tags:
     - nexus
 
-- name: 'make sure nexus group exists'
+- name: make sure group for Nexus exists
   become: true
   group:
-    name: nexus
+    name: "{{ nexus_group }}"
     state: present
   tags:
     - nexus
 
-- name: 'make sure nexus user exists'
+- name: make sure user for Nexus exists
   become: true
   user:
-    name: nexus
-    group: nexus
-    shell: '/bin/bash'
+    name: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    shell: /bin/bash
     state: present
   tags:
     - nexus
 
-- name: 'verify presence of nexus'
+- name: verify presence of nexus
   stat:
     path: "{{ nexus_home }}/bin/nexus"
   register: nexus_installed
   tags:
     - nexus
 
-- name: 'install nexus facts'
+- name: install Nexus facts
   template:
     src: nexus.fact
     dest: /etc/ansible/facts.d/nexus.fact
@@ -70,32 +69,32 @@
   tags:
     - nexus
 
-- name: 'reload local facts'
+- name: reload local facts
   setup:
   tags:
     - test
 
-- name: 'unarchive nexus'
+- name: unarchive Nexus
   unarchive:
     src: "{{ nexus_url }}"
     dest: "{{ nexus_location }}"
-    copy: no
+    copy: false
   retries: 3
   when: not nexus_installed.stat.exists
   tags:
     - nexus
 
-- name: 'link to nexus for convention'
+- name: link to Nexus for convention
   file:
     src: "{{ nexus_location }}/nexus-{{ nexus_version }}"
-    dest: '/usr/local/nexus'
-    owner: nexus
-    group: nexus
+    dest: /usr/local/nexus
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
     state: link
   tags:
     - nexus
 
-- name: 'install the nexus service file'
+- name: render Nexus systemd service file
   template:
     src: nexus.service
     dest: /etc/systemd/system/nexus.service
@@ -108,10 +107,10 @@
     - nexus
     - init
 
-- name: 'install /etc/profile.d/nexus.sh'
+- name: render Nexus Shell profile
   template:
-    src: 'nexus.profile.sh'
-    dest: '/etc/profile.d/nexus.profile.sh'
+    src: nexus.profile.sh
+    dest: /etc/profile.d/nexus.profile.sh
     owner: root
     group: root
     mode: 0644
@@ -119,33 +118,33 @@
     - reload unit
     - restart nexus
 
-- name: 'register service with system'
+- name: register service with system
   service:
     name: nexus
-    enabled: yes
+    enabled: true
   notify: restart nexus
   tags:
     - nexus
     - init
 
-- name: 'grant ownership on directory'
+- name: grant ownership on Nexus logs directory
   file:
-    path: "{{ nexus_work }}/log"
-    owner: nexus
-    group: nexus
+    path: "{{ nexus_workdir }}/log"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
     mode: 0750
     state: directory
 
-- name: 'grant ownership on nexus_work'
+- name: grant ownership on nexus_workdir
   file:
-    path: "{{ nexus_work }}"
-    owner: nexus
-    group: nexus
-    recurse: yes
+    path: "{{ nexus_workdir }}"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    recurse: true
 
-- name: 'grant ownership on pid-dir'
+- name: grant ownership on nexus_piddir
   file:
-    path: /var/run/nexus
-    owner: nexus
-    group: nexus
+    path: "{{ nexus_piddir }}"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
     state: directory
