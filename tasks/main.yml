@@ -94,6 +94,14 @@
   tags:
     - nexus
 
+- name: link Nexus init.d file
+  file:
+    src: "{{ nexus_home }}/bin/nexus"
+    dest: /etc/init.d/nexus
+    state: link
+  tags:
+    - nexus
+
 - name: render Nexus systemd service file
   template:
     src: nexus.service
@@ -143,6 +151,7 @@
     recurse: true
 
 - name: grant ownership on nexus_piddir
+  become: true
   file:
     path: "{{ nexus_piddir }}"
     owner: "{{ nexus_user }}"
