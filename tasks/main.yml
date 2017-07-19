@@ -52,6 +52,14 @@
   tags:
     - nexus
 
+- name: copy limits file
+  copy:
+    src: nexus_limits.conf
+    dest: /etc/security/limits.d/nexus_limits.conf
+    owner: root
+    group: root
+  notify: restart Nexus
+
 - name: verify presence of nexus
   stat:
     path: "{{ nexus_home }}/bin/nexus"
