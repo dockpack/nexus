@@ -6,9 +6,9 @@ After=network.target
 Type=forking
 EnvironmentFile=/etc/profile.d/nexus.profile.sh
 #PIDFile={{ nexus_piddir }}/nexus.pid
-ExecStart={{ nexus_home }}/bin/nexus start
-ExecReload={{ nexus_home }}/bin/nexus restart
-ExecStop={{ nexus_home }}/bin/nexus stop
+ExecStart=/usr/local/nexus/bin/nexus start
+ExecReload=/usr/local/nexus/bin/nexus restart
+ExecStop=/usr/local/nexus/bin/nexus stop
 User={{ nexus_user }}
 Restart=on-abort
 
