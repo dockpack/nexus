@@ -8,4 +8,4 @@ nexus_url: "{{ nexus_base_url }}/{{ nexus_tarfile }}"
 nexus_location: /opt/nexus
 nexus_home: "{{ nexus_location }}/{{ nexus_name }}"
 
-nexus_context_path: /nexus
+nexus_context_path: /
