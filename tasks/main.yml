@@ -102,6 +102,27 @@
   tags:
     - nexus
 
+- name: create Nexus etc directory
+  file:
+    path: "{{ nexus_workdir }}/etc"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    mode: 0750
+    state: directory
+
+- name: update Nexus port
+  template:
+    src: nexus.properties
+    dest: "{{ nexus_workdir }}/etc/nexus.properties"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+  notify:
+    - reload unit
+    - restart nexus
+  tags:
+    - nexus
+    - init
+
 - name: render Nexus systemd service file
   template:
     src: nexus.service
