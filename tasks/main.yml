@@ -58,7 +58,7 @@
     dest: /etc/security/limits.d/nexus_limits.conf
     owner: root
     group: root
-  notify: restart Nexus
+  notify: restart nexus
 
 - name: verify presence of nexus
   stat:
