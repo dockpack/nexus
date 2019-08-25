@@ -1,9 +1,9 @@
 galaxy_info:
   author: bbaassssiiee
   description: Sonatype Nexus 3 artifact manager
-  company: your company (optional)
+  company: Dockpack
 
-  issue_tracker_url: https://github.com/bbaassssiiee/nexus/issues
+  issue_tracker_url: https://github.com/dockpack/nexus/issues
 
   license: BSD
 
@@ -24,4 +24,4 @@ galaxy_info:
     - repositories
 
 dependencies:
-  - bbaassssiiee.base_java8
+  - dockpack.base_java8

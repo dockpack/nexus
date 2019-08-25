@@ -2,4 +2,4 @@
 
 - hosts: all
   roles:
-    - role: bbaassssiiee.nexus
+    - role: dockpack.nexus
