@@ -21,7 +21,7 @@ vagrant:
         memory: 4096
         cpus: 2
   instances:
-    - name: bbaassssiiee.nexus
+    - name: dockpack.nexus
       ansible_groups:
         - nexus
 verifier:

@@ -34,7 +34,7 @@ nexus_context_path: /
 Dependencies
 ------------
 
-[bbaassssiiee/base_java8](https://github.com/bbaassssiiee/base_java8/releases)
+[dockpack/base_java8](https://github.com/dockpack/base_java8/releases)
 
 Example Playbook
 ----------------
@@ -43,7 +43,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-        - role: bbaassssiiee.nexus
+        - role: dockpack.nexus
 
 License
 -------
